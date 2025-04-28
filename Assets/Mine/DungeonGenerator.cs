@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using deloneTriangulation;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -28,12 +29,13 @@ public class DungeonGenerator : MonoBehaviour
 
     private HashSet<Vector3Int> occupiedTiles = new HashSet<Vector3Int>();
     private Vector3Int[][] rooms; // Array of room tiles arrays
-    private Vector3[] roomCenters;
+    //private Vector3[] roomCenters;
+    private HashSet<Vector3> roomCenters = new HashSet<Vector3>();
+    public DebugDelone debugDelone;
 
     private void Awake()
     {
         rooms = new Vector3Int[roomNumber][]; 
-        roomCenters = new Vector3[roomNumber];
         GenerateDungeon(roomNumber);
     }
 
@@ -48,6 +50,15 @@ public class DungeonGenerator : MonoBehaviour
                 Debug.Log("Failed to create room after multiple attempts.");
             }
         }
+        if (debugDelone != null)
+        {
+            List<Vector2> roomCenters2D = new List<Vector2>();
+            foreach (Vector3 center in roomCenters)
+            {
+                roomCenters2D.Add(new Vector2(center.x, center.z)); // Convert to 2D
+            }
+            debugDelone.SetPoints(roomCenters2D);
+        }
     }
 
     public void ClearDungeon()
@@ -61,7 +72,9 @@ public class DungeonGenerator : MonoBehaviour
 
         occupiedTiles.Clear();
         rooms = new Vector3Int[roomNumber][];  // Clear room tiles array
-        roomCenters = new Vector3[roomNumber];  // Clear room center positions array
+        //roomCenters = new Vector3[roomNumber];  // Clear room center positions array
+        //roomCenters.Clear();
+        roomCenters = new HashSet<Vector3>();
     }
 
     public bool CreateRoom(int currentAttempt, int roomIndex)
@@ -133,7 +146,8 @@ public class DungeonGenerator : MonoBehaviour
             rooms[roomIndex] = roomTiles;
             float avg_x = roomStartX + (float)roomWidth / 2;
             float avg_z = roomStartZ + (float)roomLength / 2;
-            roomCenters[roomIndex] = new Vector3(avg_x, 0, avg_z);
+            //roomCenters[roomIndex] = new Vector3(avg_x, 0, avg_z);
+            roomCenters.Add(new Vector3(avg_x, 0, avg_z));
             return true;
         }
         else
@@ -202,7 +216,7 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         Gizmos.color = Color.green;
-        if (roomCenters != null && roomCenters.Length > 0)
+        if (roomCenters != null && roomCenters.Count > 0)
         {
             foreach (Vector3 center in roomCenters)
             {

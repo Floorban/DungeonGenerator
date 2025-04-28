@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519380955}
   - component: {fileID: 519380956}
+  - component: {fileID: 519380957}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -261,16 +262,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomRecursion: 15
-  borderSize: 11
+  borderSize: 28
   roomMargin: 2
   minRoomWidth: 2
   maxRoomWidth: 4
   minRoomLength: 3
   maxRoomLength: 5
-  roomNumber: 2
+  roomNumber: 7
   floorPrefab: {fileID: 7415050535990569633, guid: 3fb4ddafbd160274ba8f07a1cf8cd5ee,
     type: 3}
   dungeonRoot: {fileID: 519380955}
+  debugDelone: {fileID: 519380957}
+--- !u!114 &519380957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519380953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62aa8b709e39454ea7781e31126f6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realtime: 1
+  points: []
+  triangles: 0000000001000000
 --- !u!1 &1250745936
 GameObject:
   m_ObjectHideFlags: 0
