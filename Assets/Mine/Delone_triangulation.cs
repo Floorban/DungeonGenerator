@@ -28,7 +28,7 @@ namespace deloneTriangulation
                 Vector2 newpoint = points[0];
                 int idx = pointIdx;
                 pointIdx++;
-                Debug.Log("introducing point: " + newpoint + " to triangulation" + " at index:" + idx);
+                //Debug.Log("introducing point: " + newpoint + " to triangulation" + " at index:" + idx);
                 points.RemoveAt(0);
                 //==================================================================================
 
@@ -74,8 +74,8 @@ namespace deloneTriangulation
                     List<int> badtri = new() { triA, triB, triC };
                     bad_triangles.AddRange(badtri);
 
-                    Debug.Log("bad triangle found circumscribed: " + triA + "," + triB + "," + triC);
-                    Debug.Log("bad triangle indices: " + n + "," + (n + 1) + "," + (n + 2));
+                    //Debug.Log("bad triangle found circumscribed: " + triA + "," + triB + "," + triC);
+                    //Debug.Log("bad triangle indices: " + n + "," + (n + 1) + "," + (n + 2));
 
                     List<int> IDXs = new() { n, n + 1, n + 2 };
                     removeIdxs.AddRange(IDXs);
@@ -135,7 +135,7 @@ namespace deloneTriangulation
 
             bool incirc = distanceSquared <= radius * radius;
 
-            Debug.Log("Checking circle at: " + center + " with radius " + radius + ". Inside circle: " + incirc + " for point at: " + Pcheck);
+            //Debug.Log("Checking circle at: " + center + " with radius " + radius + ". Inside circle: " + incirc + " for point at: " + Pcheck);
 
             return incirc;
         }
@@ -169,9 +169,18 @@ namespace deloneTriangulation
                 edge BC = new(B, C, A);
               
                 //assume that any of the edges could be added as poly outline
-                if (EdgeInOutline(AB, badTris)) { outline.Add(AB); Debug.Log("AB edge saved at " + n); }
-                if (EdgeInOutline(AC, badTris)) { outline.Add(AC); Debug.Log("AC edge saved at " + n); }
-                if (EdgeInOutline(BC, badTris)) { outline.Add(BC); Debug.Log("BC edge saved at " + n); }
+                if (EdgeInOutline(AB, badTris)) {
+                    outline.Add(AB); 
+                    //Debug.Log("AB edge saved at " + n); 
+                }
+                if (EdgeInOutline(AC, badTris)) {
+                    outline.Add(AC);
+                    //Debug.Log("AC edge saved at " + n); 
+                }
+                if (EdgeInOutline(BC, badTris)) { 
+                    outline.Add(BC); 
+                    //Debug.Log("BC edge saved at " + n);
+                }
             }
 
             return outline;
@@ -219,7 +228,7 @@ namespace deloneTriangulation
                 edge PolyEdge = polyHole[i];
                 List<int> triangle = new() { PolyEdge.idx0, PolyEdge.idx1, newpointIdx };
                 tris.AddRange(triangle);
-                Debug.Log("edge:" + PolyEdge.idx0 + "," + PolyEdge.idx1);
+                //Debug.Log("edge:" + PolyEdge.idx0 + "," + PolyEdge.idx1);
             }
 
             return tris;

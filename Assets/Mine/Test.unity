@@ -262,13 +262,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomRecursion: 15
-  borderSize: 28
+  borderSize: 19
   roomMargin: 2
-  minRoomWidth: 2
+  minRoomWidth: 3
   maxRoomWidth: 4
-  minRoomLength: 3
+  minRoomLength: 4
   maxRoomLength: 5
-  roomNumber: 7
+  roomNumber: 3
   floorPrefab: {fileID: 7415050535990569633, guid: 3fb4ddafbd160274ba8f07a1cf8cd5ee,
     type: 3}
   dungeonRoot: {fileID: 519380955}
@@ -285,9 +285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62aa8b709e39454ea7781e31126f6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realtime: 1
   points: []
-  triangles: 0000000001000000
+  triangles: 
 --- !u!1 &1250745936
 GameObject:
   m_ObjectHideFlags: 0

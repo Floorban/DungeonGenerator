@@ -4,7 +4,6 @@ namespace deloneTriangulation
 {
     public class DebugDelone : MonoBehaviour
     {
-        [SerializeField] bool realtime;
         [SerializeField] List<Vector2> points = new();
         [SerializeField] List<int> triangles = new();
         [ContextMenu("triangulate points")]
@@ -47,6 +46,7 @@ namespace deloneTriangulation
                 Vector3 colV = new(X,Y,Z);
                 colV *= 0.5f;
                 Color col = new(colV.x, colV.y, colV.z);
+
                 Debug.DrawLine(vertexA, vertexB, col);
                 Debug.DrawLine(vertexB, vertexC, col);
                 Debug.DrawLine(vertexC, vertexA, col);

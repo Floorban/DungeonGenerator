@@ -72,9 +72,7 @@ public class DungeonGenerator : MonoBehaviour
 
         occupiedTiles.Clear();
         rooms = new Vector3Int[roomNumber][];  // Clear room tiles array
-        //roomCenters = new Vector3[roomNumber];  // Clear room center positions array
-        //roomCenters.Clear();
-        roomCenters = new HashSet<Vector3>();
+        roomCenters.Clear();
     }
 
     public bool CreateRoom(int currentAttempt, int roomIndex)
@@ -89,10 +87,6 @@ public class DungeonGenerator : MonoBehaviour
 
         roomStartX = Random.Range(0, maxX + 1);
         roomStartZ = Random.Range(0, maxZ + 1);
-
-        // enable this to check the room spawn attempts
-/*        GameObject roomParent = new GameObject($"Room_{roomStartX}_{roomStartZ}");
-        roomParent.transform.SetParent(dungeonRoot);*/
 
         bool canPlaceRoom = true;
 
